@@ -23,11 +23,11 @@ class AppsController < ApplicationController
   # GET /apps/1.json
   def show
     @app_edit_request = ApplicationHelper.get_edit_request_for session[:user_id], params[:id]
-    @current_engagement = App.find(params[:id]).engagements.order("created_at").first
-    if @current_engagement.nil?
-      @iterations = nil
-    else
+    @current_engagement = @engagements.order("created_at").first
+    if @current_engagement.present?
       @iterations = @current_engagement.iterations
+    else
+      @iterations = nil
     end
   end
 

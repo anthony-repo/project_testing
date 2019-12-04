@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-
+  helper_method :app_owner
+  
   private
   @@name_path = nil
 
@@ -61,5 +62,8 @@ class ApplicationController < ActionController::Base
     @page_num = [[1,@page_num].max,max_page_num].min
     session["#{name}_page_num"] = @page_num.to_s
   end
-
+  
+  def app_owner(app_id)
+    return current_user.app_ids.include? app_id
+  end
 end
