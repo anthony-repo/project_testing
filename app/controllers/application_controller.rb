@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   helper_method :app_owner
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> e2a4f6b852726386f22c9d6eb9f22dd66fd6dd8f
   private
   @@name_path = nil
 
@@ -64,6 +68,12 @@ class ApplicationController < ActionController::Base
   end
   
   def app_owner(app_id)
+<<<<<<< HEAD
     return current_user.app_ids.include? app_id
   end
+=======
+    current_user.app_ids.include? app_id unless current_user.student?
+  end
+
+>>>>>>> e2a4f6b852726386f22c9d6eb9f22dd66fd6dd8f
 end
