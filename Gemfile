@@ -33,6 +33,7 @@ group :development, :test do
   gem 'sqlite3', "~> 1.3.6"
   gem 'byebug'
   gem 'simplecov', :require => false
+  gem 'coveralls', require: false
 end
 
 group :test do
